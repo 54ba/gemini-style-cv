@@ -9,13 +9,13 @@ import { useCV } from "@/contexts/CVContext";
 
 export default function BulkInput() {
   const [bulkData, setBulkData] = useState("");
-  const { updateCV } = useCV();
+  const { updateCVData } = useCV();
   const { toast } = useToast();
 
   const handleBulkImport = () => {
     try {
       const data = JSON.parse(bulkData);
-      updateCV(data);
+      updateCVData(data);
       toast({
         title: "Success",
         description: "CV data has been successfully imported",
