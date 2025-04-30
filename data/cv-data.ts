@@ -1,4 +1,4 @@
-import type { CVData } from "@/types/cv-types"
+import type { CVData } from "@/types/cv-types";
 
 export const cvData: CVData = {
   basics: {
@@ -6,26 +6,31 @@ export const cvData: CVData = {
     label: "Software Engineer",
     email: "mahmoud.h.khashaba@gmail.com",
     phone: "+20 102 784 3419",
-    url: "https://github.com/mahmoud-khashaba",
+    url: "https://54ba.net",
     summary:
       "Experienced Software Engineer with expertise in full-stack development, AI integration, and microservices architecture. Proficient in multiple programming languages and frameworks including Node.js, TypeScript, Python, React, and Flutter. Strong background in building scalable applications, integrating AI technologies, and developing cross-platform solutions.",
     location: {
       address: "",
       postalCode: "",
-      city: "",
+      city: "Cairo",
       region: "Egypt",
       countryCode: "EG",
     },
     profiles: [
       {
         network: "LinkedIn",
-        username: "mahmoud-khashaba",
-        url: "https://www.linkedin.com/in/mahmoud-khashaba",
+        username: "mahmoud-h-khashaba",
+        url: "https://www.linkedin.com/in/mahmoud-h-khashaba",
       },
       {
         network: "GitHub",
-        username: "mahmoud-khashaba",
-        url: "https://github.com/mahmoud-khashaba",
+        username: "54ba",
+        url: "https://github.com/54ba",
+      },
+      {
+        network: "Portfolio",
+        username: "54ba",
+        url: "https://54ba.net",
       },
     ],
   },
@@ -33,7 +38,7 @@ export const cvData: CVData = {
     {
       company: "Tasker AI",
       position: "Software Engineer",
-      website: "",
+      website: "https://tasker.ai/",
       startDate: "Dec 2024",
       endDate: "Apr 2025",
       highlights: [
@@ -42,12 +47,21 @@ export const cvData: CVData = {
         "Built a Next.js logging interface to retrieve and visualize logs from Datadog",
         "Maintained and developed features in the cross-platform Flutter application",
       ],
-      keywords: ["Python", "Express.js", "TypeScript", "LangChain", "LangSmith", "Next.js", "Flutter", "Datadog"],
+      keywords: [
+        "Python",
+        "Express.js",
+        "TypeScript",
+        "LangChain",
+        "LangSmith",
+        "Next.js",
+        "Flutter",
+        "Datadog",
+      ],
     },
     {
       company: "Safqa",
       position: "Fullstack Developer",
-      website: "",
+      website: "https://joinsafqa.com/",
       startDate: "Sep 2024",
       endDate: "Dec 2024",
       highlights: [
@@ -57,12 +71,22 @@ export const cvData: CVData = {
         "Integrated OAuth login and tracked backend errors/events with Axiom & Google Analytics",
         "Used FastAPI and Puppeteer for website scraping",
       ],
-      keywords: ["React", "NestJS", "TypeScript", "TanStack", "ShadCN", "Cypress", "FastAPI", "Puppeteer", "OAuth"],
+      keywords: [
+        "React",
+        "NestJS",
+        "TypeScript",
+        "TanStack",
+        "ShadCN",
+        "Cypress",
+        "FastAPI",
+        "Puppeteer",
+        "OAuth",
+      ],
     },
     {
       company: "Midade",
       position: "Web Developer",
-      website: "",
+      website: "https://midade.com/",
       startDate: "Nov 2023",
       endDate: "Jun 2024",
       highlights: ["Worked with Node.js, PHP, Laravel, and modular packages"],
@@ -80,7 +104,7 @@ export const cvData: CVData = {
     {
       company: "Soundeals",
       position: "Full Stack Developer",
-      website: "",
+      website: "https://soundeals.com/",
       startDate: "Jan 2021",
       endDate: "Aug 2022",
       highlights: ["Developed features using Flutter, Dart, and Figma"],
@@ -89,7 +113,7 @@ export const cvData: CVData = {
     {
       company: "Mawad",
       position: "Backend Web Developer",
-      website: "",
+      website: "https://mawad.com/",
       startDate: "Mar 2020",
       endDate: "Nov 2020",
       highlights: ["Worked with Node.js, Express.js, and MongoDB"],
@@ -101,7 +125,9 @@ export const cvData: CVData = {
       website: "",
       startDate: "2019",
       endDate: "2019",
-      highlights: ["Built websites using PHP, Laravel, HTML, CSS, JavaScript, and Webpack"],
+      highlights: [
+        "Built websites using PHP, Laravel, HTML, CSS, JavaScript, and Webpack",
+      ],
       keywords: ["PHP", "Laravel", "HTML", "CSS", "JavaScript", "Webpack"],
     },
   ],
@@ -113,7 +139,8 @@ export const cvData: CVData = {
       startDate: "2013",
       endDate: "2019",
       gpa: "",
-      description: "Graduation Project: OLC — A Java JSP platform for managing problem-solving competitions.",
+      description:
+        "Graduation Project: OLC — A Java JSP platform for managing problem-solving competitions.",
     },
   ],
   skills: [
@@ -142,12 +169,27 @@ export const cvData: CVData = {
     {
       name: "Tools & Platforms",
       level: "Intermediate",
-      keywords: ["Cypress", "Puppeteer", "Nginx", "Docker", "Kubernetes (K8s)", "Jenkins", "AWS"],
+      keywords: [
+        "Cypress",
+        "Puppeteer",
+        "Nginx",
+        "Docker",
+        "Kubernetes (K8s)",
+        "Jenkins",
+        "AWS",
+      ],
     },
     {
       name: "ML & Data",
       level: "Intermediate",
-      keywords: ["PyTorch", "LightFM", "Pandas", "NumPy", "Scikit-learn", "MLflow"],
+      keywords: [
+        "PyTorch",
+        "LightFM",
+        "Pandas",
+        "NumPy",
+        "Scikit-learn",
+        "MLflow",
+      ],
     },
     {
       name: "Frontend",
@@ -168,7 +210,8 @@ export const cvData: CVData = {
   projects: [
     {
       name: "MusicBud",
-      description: "Django-based music recommendation and social platform integrating Spotify and YouTube Music.",
+      description:
+        "Django-based music recommendation and social platform integrating Spotify and YouTube Music.",
       highlights: [
         "Built with Django & Neo4j (Neomodel), modeling users, tracks & artists",
         "Developed LightFM-based model for collaborative/content-based filtering",
@@ -176,37 +219,56 @@ export const cvData: CVData = {
         "Merged artist data using PyTorch",
         "Developed real-time cross-platform Flutter app with OAuth login",
       ],
-      keywords: ["Python", "Django", "Neo4j", "Neomodel", "LightFM", "PyTorch", "JWT", "Asyncio", "Flutter"],
+      keywords: [
+        "Python",
+        "Django",
+        "Neo4j",
+        "Neomodel",
+        "LightFM",
+        "PyTorch",
+        "JWT",
+        "Asyncio",
+        "Flutter",
+      ],
       url: "",
     },
     {
       name: "News App Microservice",
-      description: "Built a Flask-based microservices architecture with user, post, and API gateway services.",
+      description:
+        "Built a Flask-based microservices architecture with user, post, and API gateway services.",
       highlights: ["Included migrations and test coverage using Pytest"],
       keywords: ["Flask", "Microservices", "Pytest"],
-      url: "",
+      url: "https://github.com/54ba/newsfeed-app",
     },
     {
       name: "Reservation System / Cinema POS",
-      description: "Enabled receptionists to book tickets across genres, halls, and times.",
+      description:
+        "Enabled receptionists to book tickets across genres, halls, and times.",
       highlights: [],
       keywords: ["Vue.js", "Laravel", "Nginx/SSL", "Docker"],
-      url: "",
+      url: "https://github.com/54ba/reservation_system",
     },
     {
-      name: "Indexer (Clothes Store POS)",
-      description: "Point-of-sale software for small stores. Scalable and built using Electron and MongoDB.",
+      name: "OLC Platform",
+      description:
+        "A Java JSP platform for managing problem-solving competitions.",
       highlights: [],
-      keywords: ["Electron", "MongoDB"],
-      url: "",
-    },
-    {
-      name: "Resume Scraper (RPA)",
-      description: "Extracted structured info from resumes (contact, skills, location).",
-      highlights: [],
-      keywords: ["Java", "Stanford NLP", "UIPATH Studio"],
-      url: "",
+      keywords: ["Java", "JSP", "MySQL"],
+      url: "https://github.com/54ba/olc",
     },
   ],
-  certificates: [],
-}
+  certificates: [
+    {
+      name: "Machine Learning",
+      date: "2020",
+      issuer: "Stanford University (Coursera)",
+      url: "https://www.coursera.org/account/accomplishments/verify/5QJZQJQJQJQJ",
+    },
+    {
+      name: "Deep Learning Specialization",
+      date: "2020",
+      issuer: "deeplearning.ai (Coursera)",
+      url: "https://www.coursera.org/account/accomplishments/specialization/5QJZQJQJQJQJ",
+    },
+  ],
+};

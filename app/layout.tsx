@@ -1,11 +1,20 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 import './globals.css';
 
+const inter = Inter({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
-  title: 'CV Builder',
-  description: 'Create and export your CV in multiple formats',
-  viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+  title: 'Modern CV Builder',
+  description: 'A modern CV builder with multiple themes and export options',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  // ...
 };
 
 interface RootLayoutProps {
@@ -15,13 +24,14 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster position="bottom-right" />
           {children}
         </ThemeProvider>
       </body>
