@@ -69,11 +69,11 @@ export function EditableField({ value, path, className = "", multiline = false }
   }
 
   return (
-    <div
+    <span
       onClick={() => setIsEditing(true)}
       className={`cursor-text ${className}`}
     >
       {value}
-    </div>
+    </span>
   );
 } 

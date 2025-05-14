@@ -132,9 +132,10 @@ export function DOCXExport({ theme }: DOCXExportProps) {
   }
 
   return (
-    <Button onClick={handleExport} variant="outline" size="sm">
+    <Button onClick={handleExport} variant="outline" size="sm" className="w-full sm:w-auto">
       <FileText className="h-4 w-4 mr-2" />
-      Export DOCX
+      <span className="hidden sm:inline">Export DOCX</span>
+      <span className="sm:hidden">DOCX</span>
     </Button>
   )
 } 

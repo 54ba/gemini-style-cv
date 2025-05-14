@@ -10,9 +10,11 @@ import { DOCXExport } from "@/components/DOCXExport"
 import { PDFExport } from "@/components/PDFExport"
 import { CVProvider } from "@/contexts/CVContext"
 import { BulkInput } from "@/components/BulkInput"
+import { ATSScoreDisplay } from "@/components/ATSScoreDisplay"
+import { TemplateATSInfo } from "@/components/TemplateATSInfo"
 
 export default function CVPage() {
-  const [activeTheme, setActiveTheme] = useState<"geminiDark" | "chatGPTLight">("chatGPTLight")
+  const [activeTheme, setActiveTheme] = useState<"geminiDark" | "chatGPTLight">("geminiDark")
   const [activeTab, setActiveTab] = useState<"design" | "bulk">("design")
   const cvRef = useRef<HTMLDivElement>(null)
 
@@ -30,21 +32,30 @@ export default function CVPage() {
               <TabsTrigger value="bulk">Bulk Import</TabsTrigger>
             </TabsList>
             <TabsContent value="design">
-              <div className="flex justify-between items-center mt-4">
-                <Tabs value={activeTheme} onValueChange={(value) => setActiveTheme(value as "geminiDark" | "chatGPTLight")}>
-                  <TabsList>
-                    <TabsTrigger value="chatGPTLight">ChatGPT Style</TabsTrigger>
-                    <TabsTrigger value="geminiDark">Gemini Style</TabsTrigger>
-                  </TabsList>
-                </Tabs>
-                <div className="flex gap-2">
-                  <DOCXExport theme={activeTheme} />
-                  <PDFExport cvRef={cvRef} theme={activeTheme} />
-                  <Button onClick={handlePrint} variant="outline" size="sm">
-                    <Printer className="h-4 w-4 mr-2" />
-                    Print
-                  </Button>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                <div className="space-y-4">
+                  <Tabs value={activeTheme} onValueChange={(value) => setActiveTheme(value as "geminiDark" | "chatGPTLight")}>
+                    <TabsList className="w-full">
+                      <TabsTrigger value="chatGPTLight" className="w-1/2">ChatGPT Style</TabsTrigger>
+                      <TabsTrigger value="geminiDark" className="w-1/2">Gemini Style</TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                  <TemplateATSInfo template={activeTheme} />
                 </div>
+                
+                <div>
+                  <ATSScoreDisplay />
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 justify-center md:justify-end mt-6 mb-8">
+                <DOCXExport theme={activeTheme} />
+                <PDFExport cvRef={cvRef} theme={activeTheme} />
+                <Button onClick={handlePrint} variant="outline" size="sm" className="w-full sm:w-auto">
+                  <Printer className="h-4 w-4 mr-2" />
+                  <span className="hidden sm:inline">Print</span>
+                  <span className="sm:hidden">Print</span>
+                </Button>
               </div>
             </TabsContent>
             <TabsContent value="bulk">

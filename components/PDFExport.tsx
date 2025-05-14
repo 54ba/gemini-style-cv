@@ -646,9 +646,10 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
   };
 
   return (
-    <Button onClick={handleExport} variant="outline" size="sm">
+    <Button onClick={handleExport} variant="outline" size="sm" className="w-full sm:w-auto">
       <Download className="h-4 w-4 mr-2" />
-      Export Rendered
+      <span className="hidden sm:inline">Export PDF</span>
+      <span className="sm:hidden">PDF</span>
     </Button>
   );
 }

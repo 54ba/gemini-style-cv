@@ -14,7 +14,7 @@ export function ChatGptCvDesign() {
   const { basics, work, education, skills, projects } = cvData
 
   return (
-    <div className="bg-white text-gray-800 font-sans rounded-xl shadow-lg border border-gray-200 p-6 md:p-8">
+    <div className="bg-white text-gray-800 font-sans rounded-xl shadow-lg border border-gray-200 p-6 md:p-8 dark:bg-white dark:text-gray-800 dark:border-gray-200">
       <div className="space-y-6">
         {/* Header with name and title */}
         <div className="space-y-2">
@@ -202,13 +202,13 @@ export function ChatGptCvDesign() {
                   </Badge>
                 </div>
                 {edu.description && (
-                  <p className="text-gray-700 mt-2">
+                  <div className="text-gray-700 mt-2">
                     <EditableField 
                       value={edu.description} 
                       path={["education", index.toString(), "description"]} 
                       className="inline-block" 
                     />
-                  </p>
+                  </div>
                 )}
               </div>
             ))}
@@ -296,14 +296,14 @@ export function ChatGptCvDesign() {
                         </Link>
                       )}
                     </div>
-                    <p className="text-gray-700">
+                    <div className="text-gray-700">
                       <EditableField 
                         value={project.description} 
                         path={["projects", index.toString(), "description"]} 
                         multiline={true}
                         className="inline-block" 
                       />
-                    </p>
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {project.keywords?.map((keyword, i) => (
                         <Badge key={i} variant="outline" className="bg-gray-100 text-gray-700 border-gray-300">
@@ -537,14 +537,14 @@ export function GeminiCvDesign() {
                         </Link>
                       )}
                     </div>
-                    <p className="text-[#c2c2c2]">
+                    <div className="text-[#c2c2c2]">
                       <EditableField 
                         value={project.description} 
                         path={["projects", index.toString(), "description"]} 
                         multiline={true}
                         className="inline-block" 
                       />
-                    </p>
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {project.keywords?.map((keyword, i) => (
                         <Badge 
@@ -587,13 +587,13 @@ export function GeminiCvDesign() {
                         className="inline-block" 
                       />
                     </h3>
-                    <p className="text-[#c2c2c2]">
+                    <div className="text-[#c2c2c2]">
                       <EditableField 
                         value={cert.issuer} 
                         path={["certificates", index.toString(), "issuer"]} 
                         className="inline-block" 
                       />
-                    </p>
+                    </div>
                   </div>
                   <Badge className="bg-[#3d3d3d] text-[#8ab4f8] hover:bg-[#4d4d4d]">
                     <EditableField 

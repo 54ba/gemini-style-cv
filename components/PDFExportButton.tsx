@@ -21,10 +21,11 @@ export function PDFExportButton({ elementId, filename = 'document.pdf' }: PDFExp
     <Button
       onClick={handleExport}
       variant="outline"
-      className="flex items-center gap-2"
+      className="flex items-center gap-2 w-full sm:w-auto"
     >
       <Download className="h-4 w-4" />
-      Export to PDF
+      <span className="hidden sm:inline">Export to PDF</span>
+      <span className="sm:hidden">PDF</span>
     </Button>
   );
 } 
