@@ -48,6 +48,7 @@ body {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -88,6 +89,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -107,7 +109,9 @@ body {
 }
 
 @media print {
-  html, body {
+
+  html,
+  body {
     margin: 0;
     padding: 0;
     width: 595.28pt;
@@ -133,7 +137,7 @@ body {
     color-adjust: exact !important;
     forced-color-adjust: exact !important;
   }
-  
+
   /* Ensure icons are properly rendered */
   .icon {
     font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif !important;
@@ -141,7 +145,7 @@ body {
     print-color-adjust: exact !important;
     color: inherit !important;
   }
-  
+
   /* Ensure colors are preserved */
   * {
     -webkit-print-color-adjust: exact !important;
@@ -149,7 +153,7 @@ body {
     color-adjust: exact !important;
     forced-color-adjust: exact !important;
   }
-  
+
   /* Fix icon rendering */
   [class*="icon-"] {
     font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif !important;
@@ -159,7 +163,7 @@ body {
   }
 
   /* Hide the top bar */
-  .container > div:first-child {
+  .container>div:first-child {
     display: none !important;
   }
 
@@ -177,17 +181,22 @@ body {
   }
 
   /* Ensure content is visible and properly formatted */
-  .container > div:last-child {
+  .container>div:last-child {
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
   }
 
   /* Hide any other UI elements that shouldn't be printed */
-  button, 
+  button,
   [role="tablist"],
   [role="tab"],
   .sonner-toast-container {
+    display: none !important;
+  }
+
+  /* Hide footer when printing */
+  footer {
     display: none !important;
   }
 
@@ -309,7 +318,8 @@ body {
     font-size: 14pt !important;
   }
 
-  p, li {
+  p,
+  li {
     font-size: 11pt !important;
   }
 
@@ -319,7 +329,7 @@ body {
   }
 
   /* Add some spacing between sections */
-  section + section {
+  section+section {
     margin-top: 1.5em;
   }
 }

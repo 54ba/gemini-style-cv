@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useCV } from "@/contexts/CVContext";
 
 interface PDFExportProps {
-  cvRef: RefObject<HTMLDivElement>;
+  cvRef: RefObject<HTMLDivElement | null>;
   theme: string;
 }
 
@@ -105,14 +105,14 @@ const themeColors = {
 const formatLocation = (location: any) => {
   if (!location) return '';
   if (typeof location === 'string') return location;
-  
+
   const parts = [];
   if (location.address) parts.push(location.address);
   if (location.city) parts.push(location.city);
   if (location.region) parts.push(location.region);
   if (location.postalCode) parts.push(location.postalCode);
   if (location.countryCode) parts.push(location.countryCode);
-  
+
   return parts.join(', ');
 };
 
@@ -145,7 +145,7 @@ const GradientText = ({ text, colors, styles }: { text: string; colors: string[]
 // Define styles for the PDF
 const createStyles = (theme: "geminiDark" | "chatGPTLight") => {
   const colors = themeColors[theme];
-  
+
   return StyleSheet.create({
     page: {
       padding: '40 48',
@@ -401,11 +401,12 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
   const [progress, setProgress] = useState(0);
   const styles = useMemo(() => createStyles(theme as "geminiDark" | "chatGPTLight"), [theme]);
   const colors = useMemo(() => themeColors[theme as "geminiDark" | "chatGPTLight"], [theme]);
+  const [exportSuccess, setExportSuccess] = useState(false);
 
   // Create reusable components
-  const ContactItem = ({ icon, text }: { 
-    icon: (color: string) => React.ReactElement, 
-    text: string 
+  const ContactItem = ({ icon, text }: {
+    icon: (color: string) => React.ReactElement,
+    text: string
   }) => (
     <View style={styles.contactItem}>
       <View style={styles.icon}>
@@ -482,7 +483,7 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
               ]}>
                 <Text style={styles.skillCategoryTitle}>{skillGroup.name}</Text>
                 <View style={styles.flexRow}>
-                  {skillGroup.keywords.map((skill: string, index: number) => (
+                  {skillGroup.keywords && skillGroup.keywords.map((skill: string, index: number) => (
                     <Text key={index} style={styles.skillTag}>
                       {skill}
                     </Text>
@@ -536,8 +537,8 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
       <Page size="A4" style={styles.page}>
         {/* Header Section */}
         <View style={styles.section}>
-          <GradientText 
-            text={cvData.basics.name} 
+          <GradientText
+            text={cvData.basics.name}
             colors={colors.headingGradient}
             styles={styles}
           />
@@ -549,9 +550,9 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
               <ContactItem icon={Icons.phone} text={cvData.basics.phone} />
             )}
             {cvData.basics.location && (
-              <ContactItem 
-                icon={Icons.location} 
-                text={formatLocation(cvData.basics.location)} 
+              <ContactItem
+                icon={Icons.location}
+                text={formatLocation(cvData.basics.location)}
               />
             )}
           </View>
@@ -590,67 +591,41 @@ export function PDFExport({ cvRef, theme }: PDFExportProps) {
   ), [styles, colors, renderExperienceSection, renderSkillsSection, renderEducationSection]);
 
   const handleExport = async () => {
-    if (!cvRef.current) return;
-
+    setIsGenerating(true);
+    setExportSuccess(false);
     try {
-      const printWindow = window.open("", "_blank");
-      if (!printWindow) {
-        alert("Please allow popups for this website");
-        return;
-      }
-
-      const content = cvRef.current.innerHTML;
-      const html = `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>${cvData.basics.name} - CV</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-            <style>
-              body {
-                font-family: 'Inter', sans-serif;
-                margin: 0;
-                padding: 20px;
-                background: white;
-              }
-              @media print {
-                body {
-                  padding: 0;
-                }
-                .print\\:hidden {
-                  display: none !important;
-                }
-              }
-              ${theme === "geminiDark" ? "body { background: #1a1a1a; color: white; }" : ""}
-            </style>
-          </head>
-          <body>
-            ${content}
-            <script>
-              window.onload = () => {
-                window.print()
-                window.onafterprint = () => window.close()
-              }
-            </script>
-          </body>
-        </html>
-      `;
-      printWindow.document.write(html);
-      printWindow.document.close();
+      // Use React-PDF's pdf() API to generate and download the PDF
+      const blob = await pdf(MyDocument).toBlob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${cvData.basics.name || 'cv'}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setExportSuccess(true);
     } catch (error) {
       console.error("Error exporting PDF:", error);
       alert("Error exporting PDF. Please try again.");
     }
+    setIsGenerating(false);
   };
 
   return (
-    <Button onClick={handleExport} variant="outline" size="sm" className="w-full sm:w-auto">
-      <Download className="h-4 w-4 mr-2" />
-      <span className="hidden sm:inline">Export PDF</span>
-      <span className="sm:hidden">PDF</span>
-    </Button>
+    <div>
+      <Button onClick={handleExport} variant="outline" size="sm" className="w-full sm:w-auto" data-testid="pdf-export-btn">
+        <Download className="h-4 w-4 mr-2" />
+        <span className="hidden sm:inline">Export PDF</span>
+        <span className="sm:hidden">PDF</span>
+      </Button>
+      {isGenerating && (
+        <div data-testid="export-loading">Generating PDF...</div>
+      )}
+      {exportSuccess && (
+        <div data-testid="export-success" style={{ color: 'green', marginTop: 8 }}>PDF exported successfully!</div>
+      )}
+    </div>
   );
 }
 

@@ -19,12 +19,15 @@ export default function CVPage() {
   const cvRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = () => {
-    window.print()
+    // Use PDF export for better print quality
+    if (cvRef.current) {
+      window.print()
+    }
   }
 
   return (
     <CVProvider>
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto py-8 print:mx-0 print:py-0 print:max-w-none">
         <div className="flex flex-col gap-4 mb-8 print:hidden">
           <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "design" | "bulk")}>
             <TabsList>
@@ -42,18 +45,16 @@ export default function CVPage() {
                   </Tabs>
                   <TemplateATSInfo template={activeTheme} />
                 </div>
-                
+
                 <div>
                   <ATSScoreDisplay />
                 </div>
               </div>
-              
+
               <div className="flex flex-wrap gap-2 justify-center md:justify-end mt-6 mb-8">
-                <DOCXExport theme={activeTheme} />
-                <PDFExport cvRef={cvRef} theme={activeTheme} />
                 <Button onClick={handlePrint} variant="outline" size="sm" className="w-full sm:w-auto">
                   <Printer className="h-4 w-4 mr-2" />
-                  <span className="hidden sm:inline">Print</span>
+                  <span className="hidden sm:inline">Print / Export to PDF</span>
                   <span className="sm:hidden">Print</span>
                 </Button>
               </div>
@@ -64,7 +65,7 @@ export default function CVPage() {
           </Tabs>
         </div>
         {activeTab === "design" && (
-          <div ref={cvRef}>
+          <div ref={cvRef} id="cv-container" className="cv-container print:p-0 print:m-0">
             {activeTheme === "chatGPTLight" ? (
               <ChatGptCvDesign />
             ) : (

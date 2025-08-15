@@ -1,0 +1,5 @@
+@layer utilities {
+  .ChatGPT-style .bg-background {
+    background-color: transparent;
+  }
+}
