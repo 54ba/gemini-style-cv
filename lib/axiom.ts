@@ -6,7 +6,7 @@ const getConfig = () => {
   return {
     token: process.env.AXIOM_TOKEN,
     orgId: process.env.AXIOM_ORG_ID,
-    dataset: process.env.AXIOM_DATASET || "cv-analytics"
+    dataset: process.env.AXIOM_DATASET
   };
 };
 
@@ -79,7 +79,7 @@ export function logEvent(event: string, data: Record<string, any>, request?: any
     }
 
     // Send to Axiom
-    axiom?.ingest(axiomConfig.dataset, { event, ...data });
+    axiom?.ingest(axiomConfig.dataset || "", { event, ...data });
   } catch (error) {
     // Silently handle errors
   }
