@@ -79,7 +79,9 @@ export function logEvent(event: string, data: Record<string, any>, request?: any
     }
 
     // Send to Axiom
-    axiom?.ingest(axiomConfig.dataset || "", { event, ...data });
+    if (axiomConfig.dataset) {
+      axiom?.ingest(axiomConfig.dataset, { event, ...data });
+    }         
   } catch (error) {
     // Silently handle errors
   }
