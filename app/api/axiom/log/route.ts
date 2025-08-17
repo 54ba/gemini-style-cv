@@ -10,9 +10,16 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Event is required' }, { status: 400 });
         }
 
+        // Clean up the data by removing nil/empty values
+        const cleanData = Object.fromEntries(
+            Object.entries(data).filter(([_, value]) =>
+                value !== null && value !== undefined && value !== ''
+            )
+        );
+
         // Add request metadata
         const logData = {
-            ...data,
+            ...cleanData,
             userAgent: request.headers.get('user-agent'),
             referer: request.headers.get('referer'),
             url: request.url,
