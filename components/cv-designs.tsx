@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { logEvent } from "@/lib/axiom";
+import { logEventClient } from "@/lib/axiom";
 import { useEffect } from "react";
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -16,12 +16,12 @@ export function ChatGptCvDesign() {
   const { basics, work, education, skills, projects } = cvData
 
   useEffect(() => {
-    if (typeof window !== "undefined" && logEvent) {
-      logEvent("visit", { page: "ChatGptCvDesign" });
+    if (typeof window !== "undefined") {
+      logEventClient("visit", { page: "ChatGptCvDesign" });
       const startTime = Date.now();
       const handleBeforeUnload = () => {
         const duration = Math.round((Date.now() - startTime) / 1000);
-        logEvent("time_watched", { page: "ChatGptCvDesign", duration });
+        logEventClient("time_watched", { page: "ChatGptCvDesign", duration });
       };
       window.addEventListener("beforeunload", handleBeforeUnload);
       return () => {
@@ -30,7 +30,7 @@ export function ChatGptCvDesign() {
     }
   }, []);
   const handleContentClick = (content: string) => {
-    logEvent && logEvent("content_click", { page: "ChatGptCvDesign", content });
+    logEventClient("content_click", { page: "ChatGptCvDesign", content });
   };
   return (
     <div className="ChatGPT-style bg-white text-gray-800 font-sans rounded-xl shadow-lg border border-gray-200 p-6 md:p-8 cv-preview flex flex-col" data-testid="cv-preview">
@@ -304,7 +304,7 @@ export function ChatGptCvDesign() {
                           rel="noopener noreferrer"
                           className="flex items-center text-gray-600 hover:underline"
                           onClick={() => {
-                            logEvent && logEvent("project_click", { project: project.name, url: project.url });
+                            logEventClient("project_click", { project: project.name, url: project.url });
                             handleContentClick(project.name);
                           }}
                         >
@@ -380,12 +380,12 @@ export function GeminiCvDesign() {
   const { basics, work, education, skills, projects, certificates } = cvData;
 
   useEffect(() => {
-    if (typeof window !== "undefined" && logEvent) {
-      logEvent("visit", { page: "GeminiCvDesign" });
+    if (typeof window !== "undefined") {
+      logEventClient("visit", { page: "GeminiCvDesign" });
       const startTime = Date.now();
       const handleBeforeUnload = () => {
         const duration = Math.round((Date.now() - startTime) / 1000);
-        logEvent("time_watched", { page: "GeminiCvDesign", duration });
+        logEventClient("time_watched", { page: "GeminiCvDesign", duration });
       };
       window.addEventListener("beforeunload", handleBeforeUnload);
       return () => {
@@ -394,7 +394,7 @@ export function GeminiCvDesign() {
     }
   }, []);
   const handleContentClick = (content: string) => {
-    logEvent && logEvent("content_click", { page: "GeminiCvDesign", content });
+    logEventClient("content_click", { page: "GeminiCvDesign", content });
   };
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-[#e0e0e0] font-sans p-6 md:p-8 rounded-xl gemini-dark cv-preview flex flex-col" data-testid="cv-preview">
@@ -674,7 +674,7 @@ export function GeminiCvDesign() {
                           rel="noopener noreferrer"
                           className="flex items-center text-[#c58af9] hover:text-[#8ab4f8] hover:underline"
                           onClick={() => {
-                            logEvent && logEvent("project_click", { project: project.name, url: project.url });
+                            logEventClient("project_click", { project: project.name, url: project.url });
                             handleContentClick(project.name);
                           }}
                         >
