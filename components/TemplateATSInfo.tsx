@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Check, X } from "lucide-react";
 
 interface TemplateATSInfoProps {
-  template: "geminiDark" | "chatGPTLight";
+  template: "geminiDark" | "chatGPTLight" | "modern" | "minimalist";
 }
 
 export function TemplateATSInfo({ template }: TemplateATSInfoProps) {
@@ -34,10 +34,34 @@ export function TemplateATSInfo({ template }: TemplateATSInfoProps) {
       cons: [
         "Less visual emphasis on section headers"
       ]
+    },
+    modern: {
+      score: 88,
+      pros: [
+        "Professional sidebar layout",
+        "Clear technical expertise grid",
+        "Modern color palette",
+        "Strong profile emphasis"
+      ],
+      cons: [
+        "Two-column layouts can sometimes be misread by very old ATS"
+      ]
+    },
+    minimalist: {
+      score: 95,
+      pros: [
+        "Extremely ATS-friendly serif font",
+        "Single-column standard flow",
+        "Excellent white space utilization",
+        "Perfect for technical roles"
+      ],
+      cons: [
+        "Very conservative visual style"
+      ]
     }
   };
 
-  const templateInfo = templateScores[template];
+  const templateInfo = templateScores[template] || templateScores.geminiDark;
 
   return (
     <Card className="mt-4">

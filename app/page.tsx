@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChatGptCvDesign, GeminiCvDesign } from "@/components/cv-designs"
+import { ChatGptCvDesign, GeminiCvDesign, ModernCvDesign, MinimalistCvDesign } from "@/components/cv-designs"
 import { Download, FileText, Printer } from "lucide-react"
 import { cvData } from "@/data/cv-data"
 import { DOCXExport } from "@/components/DOCXExport"
@@ -14,7 +14,7 @@ import { ATSScoreDisplay } from "@/components/ATSScoreDisplay"
 import { TemplateATSInfo } from "@/components/TemplateATSInfo"
 
 export default function CVPage() {
-  const [activeTheme, setActiveTheme] = useState<"geminiDark" | "chatGPTLight">("geminiDark")
+  const [activeTheme, setActiveTheme] = useState<"geminiDark" | "chatGPTLight" | "modern" | "minimalist">("geminiDark")
   const [activeTab, setActiveTab] = useState<"design" | "bulk">("design")
   const cvRef = useRef<HTMLDivElement>(null)
 
@@ -37,10 +37,12 @@ export default function CVPage() {
             <TabsContent value="design">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
                 <div className="space-y-4">
-                  <Tabs value={activeTheme} onValueChange={(value) => setActiveTheme(value as "geminiDark" | "chatGPTLight")}>
-                    <TabsList className="w-full">
-                      <TabsTrigger value="chatGPTLight" className="w-1/2">ChatGPT Style</TabsTrigger>
-                      <TabsTrigger value="geminiDark" className="w-1/2">Gemini Style</TabsTrigger>
+                  <Tabs value={activeTheme} onValueChange={(value) => setActiveTheme(value as any)}>
+                    <TabsList className="w-full grid grid-cols-4">
+                      <TabsTrigger value="chatGPTLight">ChatGPT</TabsTrigger>
+                      <TabsTrigger value="geminiDark">Gemini</TabsTrigger>
+                      <TabsTrigger value="modern">Modern</TabsTrigger>
+                      <TabsTrigger value="minimalist">Minimalist</TabsTrigger>
                     </TabsList>
                   </Tabs>
                   <TemplateATSInfo template={activeTheme} />
@@ -66,11 +68,10 @@ export default function CVPage() {
         </div>
         {activeTab === "design" && (
           <div ref={cvRef} id="cv-container" className="cv-container print:p-0 print:m-0">
-            {activeTheme === "chatGPTLight" ? (
-              <ChatGptCvDesign />
-            ) : (
-              <GeminiCvDesign />
-            )}
+            {activeTheme === "chatGPTLight" && <ChatGptCvDesign />}
+            {activeTheme === "geminiDark" && <GeminiCvDesign />}
+            {activeTheme === "modern" && <ModernCvDesign />}
+            {activeTheme === "minimalist" && <MinimalistCvDesign />}
           </div>
         )}
       </div>

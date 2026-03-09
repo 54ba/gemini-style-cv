@@ -1,11 +1,11 @@
 export const cvData = {
   basics: {
     name: "Mahmoud Khashaba",
-    label: "Software Engineer",
+    label: "Lead Software Engineer and Cloud Architect",
     email: "mahmoud.h.khashaba@gmail.com",
     phone: "+20 102 784 3419",
     url: "https://54ba.net",
-    summary: "Experienced Software Engineer with expertise in Python, Node.js, and modern web technologies. Passionate about building scalable applications and AI-powered solutions.",
+    summary: "Lead Software Engineer and Cloud Architect with extensive experience designing scalable machine learning infrastructure, high-throughput data pipelines, and fault-tolerant backend systems. Proven track record of owning AWS environments, enforcing DevOps best practices, and mentoring teams to deliver type-safe, production-grade applications using Python, TypeScript, and modern AI integrations.",
     location: {
       address: "",
       postalCode: "",
@@ -29,257 +29,159 @@ export const cvData = {
 
   work: [
     {
+      company: "Agroptics",
+      position: "Technical Lead / Senior AI Software Engineer",
+      website: "",
+      startDate: "08/2025",
+      endDate: "02/2026",
+      location: "Cairo, Egypt",
+      highlights: [
+        "Architected Scalable ML Infrastructure: Spearheaded the design and deployment of PyTorch-based computer vision models for satellite imagery, automating geospatial feature extraction with high precision.",
+        "Designed Fault-Tolerant Data Pipelines: Built and scaled high-throughput streaming pipelines leveraging Kafka and Spark, orchestrated via Airflow to reliably process large-scale datasets.",
+        "Drove Cloud Operations & DevOps: Managed and optimized AWS infrastructure, implementing strict DevOps best practices to ensure high availability and scalability.",
+        "Led Full-Stack Engineering: Directed the development of high-performance web applications using Next.js and FastAPI, enforcing strict type-safety and API efficiency."
+      ],
+      keywords: ["Python", "PyTorch", "Kafka", "Spark", "Airflow", "AWS", "Next.js", "FastAPI"]
+    },
+    {
       company: "Tasker AI",
-      position: "Software Engineer",
+      position: "Senior Software Engineer",
       website: "https://taskerai.com",
       startDate: "12/2024",
-      endDate: "04/2025",
+      endDate: "05/2025",
       location: "Remote - USA",
       highlights: [
-        "Developed Python-based AI agent proxies integrating LangSmith with large language models such as DeepSeek and Alibaba's Qwen.",
-        "Maintained and extended backend services using Express.js, TypeScript, LangChain, and LangSmith.",
-        "Built a custom Next.js logging interface to retrieve and visualize logs from Datadog for debugging and monitoring.",
-        "Contributed to the maintenance and development of features in the company's cross-platform Flutter application."
+        "Engineered AI Integration Layers: Developed Python-based AI agent proxies, integrating Large Language Models (DeepSeek, Alibaba Qwen) with LangSmith for advanced prompt tracking.",
+        "Built Observability Tooling: Architected a custom Next.js logging interface integrated with Datadog to retrieve, visualize, and debug cross-service telemetry.",
+        "Maintained Core Architecture: Scaled and optimized mission-critical backend services utilizing Express.js, TypeScript, and LangChain."
       ],
-      keywords: ["Python", "LangSmith", "TypeScript", "LangChain", "Next.js", "Datadog", "Flutter"]
+      keywords: ["Python", "DeepSeek", "Qwen", "LangSmith", "Next.js", "Datadog", "Express.js", "TypeScript", "LangChain"]
     },
     {
       company: "Safqa",
-      position: "Fullstack Developer",
+      position: "Senior Full-Stack Developer (Contract)",
       website: "",
-      startDate: "09/2024",
-      endDate: "12/2024",
+      startDate: "08/2024",
+      endDate: "11/2024",
       location: "Remote",
       highlights: [
-        "Utilized TanStack and ShadCN to build scalable front-end architecture.",
-        "Implemented Cypress tests to ensure code quality and automated testing.",
-        "Developed and optimized React pages using NestJS and TypeScript for enhanced user experience.",
-        "Integrated OAuth for secure user login functionality.",
-        "Employed Axiom and Google Analytics to track and resolve backend errors and monitor event tracking.",
-        "Used FastAPI Python and Puppeteer to scrape websites."
+        "Established Frontend Architecture: Utilized TanStack and ShadCN to build a scalable and highly maintainable front-end architecture.",
+        "Implemented QA Automation: Championed code quality by introducing Cypress end-to-end tests and automated testing pipelines.",
+        "Optimized System Observability: Integrated Axiom and Google Analytics to track backend errors and monitor complex event workflows."
       ],
-      keywords: ["TanStack", "ShadCN", "Cypress", "React", "NestJS", "TypeScript", "OAuth", "FastAPI", "Python"]
+      keywords: ["TanStack", "ShadCN", "Cypress", "Axiom", "Google Analytics"]
     },
     {
-      company: "Midade",
-      position: "Web developer",
+      company: "Midade Technical Services",
+      position: "Web Developer",
       website: "",
       startDate: "11/2023",
-      endDate: "06/2024",
+      endDate: "07/2024",
       location: "Remote, Egypt",
       highlights: [
-        "Developed web applications using Node.js, PHP, and Laravel.",
-        "Created modular packages for code reusability and maintainability."
+        "Engineered modular PHP/Laravel packages to optimize development workflows and elevate codebase maintainability.",
+        "Built custom web scraping automation utilities leveraging Python FastAPI and Puppeteer."
       ],
-      keywords: ["Node.js", "PHP", "Laravel", "Modular packages"]
+      keywords: ["PHP", "Laravel", "Python", "FastAPI", "Puppeteer"]
     },
     {
       company: "FBN Travel",
-      position: "Back-End Web developer",
+      position: "Back-End Web Developer",
       website: "",
       startDate: "11/2022",
       endDate: "06/2023",
       location: "Remote, Egypt",
       highlights: [
-        "Developed backend systems using PHP and Laravel.",
-        "Created responsive user interfaces using Vue.js."
+        "Modernized legacy booking architectures by migrating core systems to the latest PHP, Laravel, and Vue.js tech stacks.",
+        "Optimized AWS infrastructure responsibilities, drastically improving platform cost efficiency and resource allocation."
       ],
-      keywords: ["PHP", "Laravel", "Vue.js"]
+      keywords: ["PHP", "Laravel", "Vue.js", "AWS"]
     },
     {
-      company: "Soundeals",
-      position: "Full stack developer",
+      company: "soundeals",
+      position: "Full Stack Developer",
       website: "",
       startDate: "01/2021",
       endDate: "08/2022",
       location: "Cairo, Egypt",
       highlights: [
-        "Developed cross-platform applications using Flutter and Dart.",
-        "Collaborated with design teams using Figma to create user interfaces."
+        "Architected and deployed a cross-platform voice-over auditioning application using Flutter, Dart, and Redux.",
+        "Designed a highly intuitive UI/UX system bridging Google Material and Apple design paradigms."
       ],
-      keywords: ["Flutter", "Dart", "Figma"]
+      keywords: ["Flutter", "Dart", "Redux", "UI/UX"]
     },
     {
       company: "Mawad",
-      position: "Back-End Web developer",
+      position: "Back-End Web Developer",
       website: "",
       startDate: "03/2020",
       endDate: "11/2020",
       location: "Cairo, Egypt",
       highlights: [
-        "Developed backend services using Node.js, Express.js, and MongoDB.",
-        "Designed database schemas and implemented RESTful APIs."
+        "Architected the backend infrastructure for a large-scale construction materials e-commerce platform.",
+        "Engineered a custom algorithmic sorting module and camera-recognition calculator for material estimation.",
+        "Designed and implemented automated CI/CD pipelines, streamlining the deployment process for highly efficient release cycles."
       ],
-      keywords: ["Node.js", "Express.js", "MongoDB"]
-    },
-    {
-      company: "Grafika",
-      position: "Web developer",
-      website: "",
-      startDate: "2019",
-      endDate: "2019",
-      location: "Cairo, Egypt",
-      highlights: [
-        "Developed websites using PHP, Laravel, HTML, CSS, and JavaScript.",
-        "Optimized build processes using Webpack for better performance."
-      ],
-      keywords: ["PHP", "Laravel", "HTML", "CSS", "JavaScript", "Webpack"]
+      keywords: ["Node.js", "E-commerce", "CI/CD"]
     }
   ],
 
   education: [
     {
-      institution: "Faculty of Engineering- Zagazig University",
-      area: "Electrical Engineering Computers & Systems",
+      institution: "Zagazig University",
+      area: "Electrical Engineering (Computers & Systems)",
       studyType: "B.Sc.",
       startDate: "2013",
       endDate: "2019",
-      description: "Graduation Project: OLC Developed a Java JSP Online compiler website for managing problem-solving competitions."
+      description: "Graduation Project: Developed a comprehensive Java JSP online compiler platform for managing programming contests and algorithmic problem-solving."
     }
   ],
 
   skills: [
     {
-      name: "Programming Languages",
-      level: "Advanced",
-      keywords: ["Node.js", "Typescript", "Python", "PHP", "Java"]
+      name: "Languages",
+      level: "Expert",
+      keywords: ["Python", "TypeScript", "JavaScript (Node.js)", "PHP", "Java", "Dart"]
     },
     {
-      name: "Backend Technologies",
-      level: "Advanced",
-      keywords: ["Express Js", "Django", "FastAPI", "Flask", "Laravel", "JSP"]
+      name: "Backend & APIs",
+      level: "Expert",
+      keywords: ["FastAPI", "Express.js", "NestJS", "Django", "Flask", "Laravel"]
     },
     {
-      name: "Frontend Technologies",
-      level: "Advanced",
-      keywords: ["Next js", "Vue js", "React", "TypeScript", "HTML", "CSS"]
+      name: "Data & AI",
+      level: "Expert",
+      keywords: ["PyTorch", "Pandas", "Scikit-learn", "NumPy", "LangChain", "LangSmith", "Kafka", "Spark"]
     },
     {
       name: "Databases",
-      level: "Intermediate",
-      keywords: ["MYSQL", "MongoDB", "Neo4j"]
+      level: "Expert",
+      keywords: ["PostgreSQL", "MySQL", "MongoDB", "Neo4j"]
     },
     {
-      name: "AI & Machine Learning",
-      level: "Intermediate",
-      keywords: ["Langchain", "Pytorch", "Pandas", "Scikit-learn", "Numpy", "MLflow"]
+      name: "Cloud & DevOps",
+      level: "Expert",
+      keywords: ["AWS", "Docker", "Kubernetes (K8s)", "Jenkins", "Nginx", "Airflow", "Datadog", "MLflow", "GitHub Actions"]
     },
     {
-      name: "DevOps & Tools",
-      level: "Intermediate",
-      keywords: ["Nginx", "Docker", "K8s", "Jenkins", "AWS", "Puppeteer", "Cypress"]
+      name: "Frontend",
+      level: "Expert",
+      keywords: ["Next.js", "React", "Vue.js", "Tailwind CSS", "ShadCN"]
     }
   ],
 
   projects: [
     {
-      name: "MusicBud",
-      description: "A recommendation system matches users with similar tastes in music.",
-      url: "https://github.com/musicbud",
-      highlights: [
-        "Developed a music recommendation and social platform using Django, integrating Spotify and YouTube Music.",
-        "Built the backend with Django and Neo4j to manage complex relationships between users, tracks, and artists.",
-        "Implemented a LightFM model for personalized music suggestions through collaborative and content-based filtering.",
-        "Created RESTful APIs with pagination and async support.",
-        "Developed a cross-platform Flutter app with real-time updates and OAuth login."
-      ],
-      keywords: ["Python", "Django", "Neo4j", "Neomodel", "LightFM", "PyTorch", "JWT", "Spotify-YouTube Music APIs", "Asyncio", "Flutter"]
+      name: "NixOS Modular Configuration System",
+      description: "Architected a highly maintainable, declarative NixOS dotfile system. Engineered to be minimal by default, allowing dynamic activation of isolated service and package sets.",
+      highlights: ["Declarative configuration", "Minimal by default", "Dynamic activation"],
+      keywords: ["NixOS", "Dotfiles", "System Architecture"]
     },
     {
-      name: "NixOS-Dot-Files",
-      description: "Modular NixOS Configuration",
-      url: "https://github.com/54ba//nixos-dot-files",
-      highlights: [
-        "Enables and disables different sets of packages and services.",
-        "Minimal by default, with optional components that can be activated as needed."
-      ],
-      keywords: ["NixOS", "Configuration", "Modular"]
-    },
-    {
-      name: "AI Agent",
-      description: "PDF Processing API with LangChain",
-      url: "https://github.com/54ba/agent",
-      highlights: [
-        "Developed a Python-based AI agent that processes PDF files, extracting text with metadata, and integrating with LangChain for advanced NLP tasks.",
-        "Built a FastAPI-based REST API with async processing, automatic documentation (Swagger/ReDoc), CORS support, and robust file upload handling.",
-        "Created a rich terminal UI with progress bars, tables, colorful output, and interactive commands for user interaction.",
-        "Utilized Pytest for API routes and Cypress for end-to-end PDF processing to ensure reliability."
-      ],
-      keywords: ["FastAPI", "LangChain", "Python", "Docker", "Pytest", "Cypress"]
-    },
-    {
-      name: "News App Microservice",
-      description: "microservices-based newsfeed application",
-      url: "https://github.com/54ba/newsfeed-app",
-      highlights: [
-        "Developed a microservices-based newsfeed application using Flask",
-        "Designed services for user management, posts, and an API gateway",
-        "Implemented database migrations and thorough testing with pytest"
-      ],
-      keywords: ["Flask", "Microservices", "Python", "pytest"]
-    },
-    {
-      name: "Gemini-Style-CV",
-      description: "CV Gemini design template with ATS Compatibility Score",
-      url: "https://github.com/54ba/gemini-style-cv",
-      highlights: [
-        "Designed and developed an innovative CV template inspired by the Gemini design philosophy.",
-        "Features responsive layout and ATS compatibility scoring.",
-        "Open-sourced to benefit job seekers worldwide."
-      ],
-      keywords: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
-    },
-    {
-      name: "Reservation System",
-      description: "Box Office and Cinema tickets POS sys.",
-      url: "https://github.com/54ba/reservation_system",
-      highlights: [
-        "Built a system to enable receptionists to book seat tickets.",
-        "Allows navigation through genres, halls, and times."
-      ],
-      keywords: ["VueJS", "Laravel", "Nginx/SSL", "Docker"]
-    },
-    {
-      name: "MovieSeeder",
-      description: "An api for seeding movies from TMDB",
-      url: "https://github.com/54ba/movieseeder",
-      highlights: [
-        "Created an application to automate discovering, downloading, and organizing movie content.",
-        "Implemented advanced filtering based on quality ratings, release dates, and genres.",
-        "Developed a user-friendly interface with real-time status updates and intuitive controls.",
-        "Integrated multiple APIs to gather metadata for a richer user experience."
-      ],
-      keywords: ["API", "Movie", "TMDB", "Automation", "Filtering"]
-    },
-    {
-      name: "Parcel Delivery Tracker",
-      description: "delivery tracker application using Vue.js 3 and Express.js",
-      url: "https://github.com/54ba/parcel_deliver",
-      highlights: [
-        "Developed a delivery tracker application using Vue.js 3 and Express.js, containerized with Docker.",
-        "Implemented a comprehensive set of API endpoints for managing parcels, senders, and bikers.",
-        "Features include retrieving parcels by ID, sender, or biker status, with robust API endpoint testing.",
-        "Designed for future integration of a drag-and-drop SPA, JWT authentication, and cloud deployment with Nginx."
-      ],
-      keywords: ["Vue.js", "Express.js", "Docker", "API", "JWT", "Nginx"]
-    },
-    {
-      name: "Resume Scraper",
-      description: "Java | RPA For extracting useful information from CVs",
-      highlights: [
-        "Utilizes contact information, skills, and location to generate CVs.",
-        "Built with the Stanford NTLK (Natural Language) Java library and UiPath Studio."
-      ],
-      keywords: ["Java", "RPA", "NTLK", "UiPath", "CV Processing"]
-    },
-    {
-      name: "Indexer",
-      description: "POS System for small businesses",
-      highlights: [
-        "Developed a scalable software solution suitable for small businesses.",
-        "Utilized Electron and MongoDB to build the application, allowing for easy upgrades and future scaling."
-      ],
-      keywords: ["Electron", "MongoDB", "POS", "Scalable"]
+      name: "AI Agent API Architecture",
+      description: "Built a production-ready FastAPI REST API for asynchronous PDF processing. Integrated LangChain for intelligent text chunking, containerized with Docker, and secured via robust Pytest and Cypress testing suites.",
+      highlights: ["Asynchronous processing", "Intelligent chunking", "Containerized deployment"],
+      keywords: ["FastAPI", "LangChain", "Docker", "Pytest", "Cypress"]
     }
   ]
-};
+}

@@ -13,7 +13,8 @@ import { useCV } from "@/contexts/CVContext"
 // ChatGPT Style CV Design
 export function ChatGptCvDesign() {
   const { cvData } = useCV()
-  const { basics, work, education, skills, projects } = cvData
+  const { basics, work = [], education = [], skills = [], projects = [] } = cvData
+  const profiles = basics?.profiles || []
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -53,7 +54,7 @@ export function ChatGptCvDesign() {
                   <span className="sr-only">Portfolio</span>
                 </Link>
               </Button>
-              {basics.profiles.map((profile) => (
+              {(basics.profiles || []).map((profile) => (
                 <Button
                   key={profile.network}
                   variant="outline"
@@ -377,7 +378,7 @@ export function ChatGptCvDesign() {
 // Gemini Dark Mode Style CV Design
 export function GeminiCvDesign() {
   const { cvData } = useCV();
-  const { basics, work, education, skills, projects, certificates } = cvData;
+  const { basics, work = [], education = [], skills = [], projects = [], certificates = [] } = cvData;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -415,7 +416,7 @@ export function GeminiCvDesign() {
                 <ExternalLink className="h-4 w-4" />
                 <span className="sr-only">Portfolio</span>
               </Link>
-              {basics.profiles.map((profile) => (
+              {(basics.profiles || []).map((profile) => (
                 profile.network && (profile.network === "GitHub" || profile.network === "LinkedIn") && (
                   <Link
                     key={profile.network}
@@ -783,7 +784,290 @@ export function GeminiCvDesign() {
             {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
           </p>
         </footer>
-      </div>
-    </div>
-  )
-}
+        </div>
+        </div>
+        )
+        }
+
+        // Modern Professional CV Design
+        export function ModernCvDesign() {
+        const { cvData } = useCV();
+        const { basics, work = [], education = [], skills = [], projects = [] } = cvData;
+
+        useEffect(() => {
+        if (typeof window !== "undefined") {
+        logEventClient("visit", { page: "ModernCvDesign" });
+        }
+        }, []);
+
+        return (
+        <div className="modern-style bg-white text-slate-900 font-sans rounded-xl shadow-xl border border-slate-200 overflow-hidden cv-preview flex flex-col" data-testid="cv-preview">
+        {/* Sidebar-style Header */}
+        <div className="flex flex-col md:flex-row min-h-[200px]">
+        <div className="bg-slate-900 text-white p-8 md:w-1/3 flex flex-col justify-center">
+          <h1 className="text-3xl font-bold tracking-tight mb-2">
+            <EditableField value={basics.name || ""} path={["basics", "name"]} className="inline-block" />
+          </h1>
+          <p className="text-slate-400 font-medium mb-4">
+            <EditableField value={basics.label || ""} path={["basics", "label"]} className="inline-block" />
+          </p>
+          <div className="space-y-2 text-sm text-slate-300">
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              <EditableField value={basics.email || ""} path={["basics", "email"]} className="inline-block" />
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <EditableField 
+                value={`${basics.location?.city || ""}, ${basics.location?.region || ""}`} 
+                path={["basics", "location", "city"]} 
+                className="inline-block" 
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <ExternalLink className="h-4 w-4" />
+              <Link href={basics.url || "#"} className="hover:text-white transition-colors">
+                <EditableField value={basics.url || "Portfolio"} path={["basics", "url"]} className="inline-block" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-8 md:w-2/3 bg-slate-50 flex flex-col justify-center">
+          <h2 className="text-lg font-semibold text-slate-900 mb-2 uppercase tracking-wider border-b-2 border-slate-200 pb-1 inline-block w-fit">
+            Profile
+          </h2>
+          <p className="text-slate-600 leading-relaxed text-sm italic">
+            <EditableField 
+              value={basics.summary || ""} 
+              path={["basics", "summary"]} 
+              multiline={true} 
+              className="block w-full" 
+            />
+          </p>
+        </div>
+        </div>
+
+        <div className="p-8 space-y-8 flex-1">
+        {/* Experience */}
+        {work.length > 0 && (
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm">01</span>
+              Professional Experience
+            </h2>
+            <div className="space-y-6 ml-4 border-l-2 border-slate-100 pl-6">
+              {work.map((job, index) => (
+                <div key={index} className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-300 border-2 border-white" />
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-800">
+                        <EditableField value={job.position || ""} path={["work", index.toString(), "position"]} className="inline-block" />
+                      </h3>
+                      <p className="text-slate-600 font-medium">
+                        <EditableField value={job.company || ""} path={["work", index.toString(), "company"]} className="inline-block" />
+                      </p>
+                    </div>
+                    <span className="text-sm font-semibold text-slate-400 bg-slate-100 px-2 py-1 rounded">
+                      <EditableField value={`${job.startDate} - ${job.endDate || "Present"}`} path={["work", index.toString(), "startDate"]} className="inline-block" />
+                    </span>
+                  </div>
+                  <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
+                    {job.highlights?.map((highlight, i) => (
+                      <li key={i}>
+                        <EditableField value={highlight} path={["work", index.toString(), "highlights", i.toString()]} className="inline-block" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Skills */}
+        {skills.length > 0 && (
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm">02</span>
+              Technical Expertise
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-12">
+              {skills.map((group, index) => (
+                <div key={index} className="bg-slate-50 p-4 rounded-lg">
+                  <h3 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
+                    <EditableField value={group.name || ""} path={["skills", index.toString(), "name"]} className="inline-block" />
+                  </h3>
+                  <div className="flex flex-wrap gap-1">
+                    {group.keywords?.map((skill, i) => (
+                      <span key={i} className="text-xs bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded shadow-sm">
+                        <EditableField value={skill} path={["skills", index.toString(), "keywords", i.toString()]} className="inline-block" />
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Education & Projects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ml-12">
+          {education.length > 0 && (
+            <section>
+              <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2 -ml-12">
+                <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm">03</span>
+                Education
+              </h2>
+              <div className="space-y-4">
+                {education.map((edu, index) => (
+                  <div key={index}>
+                    <h3 className="font-bold text-slate-800 text-sm">
+                      <EditableField value={`${edu.studyType || ""} ${edu.area || ""}`} path={["education", index.toString(), "area"]} className="inline-block" />
+                    </h3>
+                    <p className="text-slate-600 text-xs">
+                      <EditableField value={edu.institution || ""} path={["education", index.toString(), "institution"]} className="inline-block" />
+                    </p>
+                    <p className="text-slate-400 text-[10px] font-bold">
+                      <EditableField value={`${edu.startDate} - ${edu.endDate}`} path={["education", index.toString(), "startDate"]} className="inline-block" />
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {projects.length > 0 && (
+            <section>
+              <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2 -ml-12">
+                <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm">04</span>
+                Key Projects
+              </h2>
+              <div className="space-y-4">
+                {projects.map((project, index) => (
+                  <div key={index}>
+                    <h3 className="font-bold text-slate-800 text-sm">
+                      <EditableField value={project.name || ""} path={["projects", index.toString(), "name"]} className="inline-block" />
+                    </h3>
+                    <p className="text-slate-600 text-xs line-clamp-2">
+                      <EditableField value={project.description || ""} path={["projects", index.toString(), "description"]} className="inline-block" />
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+        </div>
+
+        <footer className="bg-slate-100 p-4 text-center text-[10px] text-slate-400 uppercase tracking-[0.2em]">
+        Professional Curriculum Vitae • {basics.name} • {new Date().getFullYear()}
+        </footer>
+        </div>
+        );
+        }
+
+        // Minimalist CV Design
+        export function MinimalistCvDesign() {
+        const { cvData } = useCV();
+        const { basics, work = [], education = [], skills = [] } = cvData;
+
+        useEffect(() => {
+        if (typeof window !== "undefined") {
+        logEventClient("visit", { page: "MinimalistCvDesign" });
+        }
+        }, []);
+
+        return (
+        <div className="minimalist-style bg-white text-zinc-900 font-serif p-12 cv-preview flex flex-col max-w-4xl mx-auto" data-testid="cv-preview">
+        <header className="text-center mb-12">
+        <h1 className="text-4xl font-light uppercase tracking-[0.3em] mb-4">
+          <EditableField value={basics.name || ""} path={["basics", "name"]} className="inline-block" />
+        </h1>
+        <div className="flex justify-center gap-4 text-xs text-zinc-500 uppercase tracking-widest">
+          <EditableField value={basics.email || ""} path={["basics", "email"]} className="inline-block" />
+          <span>/</span>
+          <EditableField value={basics.phone || ""} path={["basics", "phone"]} className="inline-block" />
+          <span>/</span>
+          <EditableField value={basics.location?.city || ""} path={["basics", "location", "city"]} className="inline-block" />
+        </div>
+        </header>
+
+        <div className="space-y-12">
+        <section>
+          <h2 className="text-xs font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Profile</h2>
+          <p className="text-sm leading-relaxed text-zinc-600 font-sans">
+            <EditableField value={basics.summary || ""} path={["basics", "summary"]} multiline={true} className="block w-full" />
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Experience</h2>
+          <div className="space-y-8">
+            {work.map((job, index) => (
+              <div key={index}>
+                <div className="flex justify-between items-baseline mb-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider">
+                    <EditableField value={job.company || ""} path={["work", index.toString(), "company"]} className="inline-block" />
+                  </h3>
+                  <span className="text-[10px] text-zinc-400">
+                    <EditableField value={`${job.startDate} - ${job.endDate || "Present"}`} path={["work", index.toString(), "startDate"]} className="inline-block" />
+                  </span>
+                </div>
+                <p className="text-xs italic text-zinc-500 mb-3">
+                  <EditableField value={job.position || ""} path={["work", index.toString(), "position"]} className="inline-block" />
+                </p>
+                <ul className="space-y-1">
+                  {job.highlights?.map((highlight, i) => (
+                    <li key={i} className="text-xs text-zinc-600 font-sans flex gap-2">
+                      <span className="text-zinc-300">•</span>
+                      <EditableField value={highlight} path={["work", index.toString(), "highlights", i.toString()]} className="inline-block" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Skills</h2>
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {skills.map((group, index) => (
+              <div key={index}>
+                <h3 className="text-[10px] font-bold uppercase text-zinc-400 mb-1">
+                  <EditableField value={group.name || ""} path={["skills", index.toString(), "name"]} className="inline-block" />
+                </h3>
+                <p className="text-xs text-zinc-600 font-sans">
+                  {group.keywords?.join(", ")}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Education</h2>
+          <div className="space-y-4">
+            {education.map((edu, index) => (
+              <div key={index} className="flex justify-between items-baseline">
+                <div>
+                  <h3 className="text-sm font-bold">
+                    <EditableField value={edu.institution || ""} path={["education", index.toString(), "institution"]} className="inline-block" />
+                  </h3>
+                  <p className="text-xs text-zinc-500">
+                    <EditableField value={`${edu.studyType || ""} ${edu.area || ""}`} path={["education", index.toString(), "area"]} className="inline-block" />
+                  </p>
+                </div>
+                <span className="text-[10px] text-zinc-400">
+                  <EditableField value={`${edu.startDate} - ${edu.endDate}`} path={["education", index.toString(), "startDate"]} className="inline-block" />
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+        </div>
+        </div>
+        );
+        }

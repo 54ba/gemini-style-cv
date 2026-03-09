@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import { useCV } from "@/contexts/CVContext";
 
 interface EditableFieldProps {
-  value: string;
+  value: string | undefined;
   path: string[];
   className?: string;
   multiline?: boolean;
 }
 
-export function EditableField({ value, path, className = "", multiline = false }: EditableFieldProps) {
+export function EditableField({ value = "", path, className = "", multiline = false }: EditableFieldProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(value);
   const { updateField } = useCV();

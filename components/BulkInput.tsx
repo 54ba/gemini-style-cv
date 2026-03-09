@@ -16,46 +16,10 @@ export function BulkInput() {
 
   const validateCVData = (data: any): data is CVData => {
     try {
-      // Basic structure validation
-      if (!data.basics || !data.work || !data.education || !data.skills) {
+      // Basic structure validation - just check if it's an object
+      if (typeof data !== 'object' || data === null) {
         return false;
       }
-
-      // Basics validation
-      const requiredBasicFields = ['name', 'label', 'email', 'phone', 'url', 'summary', 'location'];
-      if (!requiredBasicFields.every(field => data.basics[field])) {
-        return false;
-      }
-
-      // Location validation
-      const requiredLocationFields = ['address', 'city', 'region', 'countryCode'];
-      if (!requiredLocationFields.every(field => data.basics.location[field])) {
-        return false;
-      }
-
-      // Arrays validation
-      if (!Array.isArray(data.work) || !Array.isArray(data.education) || !Array.isArray(data.skills)) {
-        return false;
-      }
-
-      // Work entries validation
-      const hasValidWork = data.work.every((job: any) => 
-        job.company && job.position && job.startDate && Array.isArray(job.highlights)
-      );
-      if (!hasValidWork) return false;
-
-      // Education entries validation
-      const hasValidEducation = data.education.every((edu: any) => 
-        edu.institution && edu.area && edu.studyType && edu.startDate
-      );
-      if (!hasValidEducation) return false;
-
-      // Skills validation
-      const hasValidSkills = data.skills.every((skill: any) => 
-        skill.name && skill.level && Array.isArray(skill.keywords)
-      );
-      if (!hasValidSkills) return false;
-
       return true;
     } catch (error) {
       return false;
@@ -68,8 +32,8 @@ export function BulkInput() {
       
       if (!validateCVData(data)) {
         toast({
-          title: "Invalid CV Data Format",
-          description: "Please ensure your data follows the required structure and all required fields are present.",
+          title: "Invalid Data Format",
+          description: "Please ensure your data is a valid JSON object.",
           variant: "destructive",
         });
         return;
@@ -192,10 +156,8 @@ export function BulkInput() {
                       <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
                         <li>All dates should be in YYYY-MM format</li>
                         <li>The JSON must be properly formatted and valid</li>
-                        <li>All required fields must be present (basics, work, education, skills)</li>
-                        <li>Arrays (work, education, skills) must contain at least one item</li>
-                        <li>Each section should follow the exact structure shown above</li>
-                        <li>Projects section is optional</li>
+                        <li>All fields are optional - only include what you need</li>
+                        <li>Each section should follow the structure shown above</li>
                       </ul>
                     </div>
                   </div>
